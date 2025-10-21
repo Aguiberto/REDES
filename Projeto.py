@@ -51,7 +51,7 @@ enderecoREDE = []
 for i in range(4):
     enderecoREDE.append(converter_ip[i] & converter_maskara[i])
 
-print(f"O endereço de REDE É: {enderecoREDE}")
+# print(f"O endereço de REDE É: {enderecoREDE}")
 # ENDEREÇO DE REDE
 
 # --------------------------- ENDEREÇO BROADCAST --------------------------------
@@ -66,17 +66,35 @@ for l in range(4):
     fazendo_or = converter_ip[l] | inverter_mascara[l]
     enderecoBROAD.append(fazendo_or)
 
-print(f"Seu endereço BROADCAST é: {enderecoBROAD}")
+#--------------------- MOSTRAND OS RESULTADOS ----------------------------------------
+rede_str = []
+broad_str =[]
 
-# ---------------------------- VEFIRICAÇÃO DE VALIDADE DE REDE -----------------------
+for m in range(4):
 
-# comparar se o endeço ip está entre o endereço de rede eo endereço BROADCAST
-# verficar octeto por octeto
+    alterador_rede = str(enderecoREDE[m])
+    alterador_broad = str(enderecoBROAD[m])
 
-validade = False
+    rede_str.append(alterador_rede)
+    broad_str.append(alterador_broad)
 
-for m in range (4):
-    if (enderecoIP[m] <= enderecoREDE[m]) or (enderecoIP[m] >= enderecoBROAD[m]):
-        validade = True
 
-print(f"Validade do IP: {validade}")
+conta_um = 0
+for n in converter_maskara:
+    conta_um += bin(n).count('1')
+# cdri
+
+rede_formatada = '.'.join(rede_str)
+broad_formatado = '.'.join(broad_str)
+
+print(f"Seu enderede de REDE é: {rede_formatada}/{conta_um}")
+print(f"Seu endereço BROADCAST é: {broad_formatado}")
+
+# ---------------------- VALIDAÇÃO IP --------------------------------------------
+
+if enderecoREDE <= converter_ip <= enderecoBROAD:
+    validade = True
+else:
+    validade = False
+
+print(f"Validade : {validade}")

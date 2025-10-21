@@ -15,3 +15,10 @@ for parte in octetos:
     BROADbinario.append(complemento)
 
 print (BROADbinario)
+
+# def ip_cdir(maskara_convertida, ip_convertido):
+
+unidos = '.'.join(BROADbinario)
+conta_um = unidos.count("1")
+
+print(f"{unidos} / {conta_um}")
