@@ -43,6 +43,11 @@ converter_maskara = binarizator(enderecoMASK)
 
 inverter_mascara = araksam(converter_maskara)
 
-print(inverter_mascara)
+# realizando OR BITWISE
 
-# falta só fazer o OR ENTRE A MASCARA E O IP
+enderecoBROAD = []
+for l in range(4):
+    fazendo_or = converter_ip[l] | inverter_mascara[l]
+    enderecoBROAD.append(fazendo_or)
+
+print(f"Seu endereço BROADCAST é: {enderecoBROAD}")
