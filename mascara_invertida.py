@@ -30,11 +30,12 @@ print(f" Tipo de dado em Mask_bin_int é :{type(mask_bin_int[0])}")
 # Inverter a mascara
 
 mask_invertida = []
-inversor = 0b11111111
+fator_de_inversao = 0b11111111
 
 for j in range(4):
 
-    mecanismo = inversor ^ mask_bin_int[j]
-    mask_invertida.append(mecanismo)
+    xor  = fator_de_inversao ^ mask_bin_int[j]
+    mask_invertida.append(bin(xor)[2:].zfill(8))
+    # saída é do tipo STR
 
 print(mask_invertida)
