@@ -71,3 +71,12 @@ print(f"Seu endereço BROADCAST é: {enderecoBROAD}")
 # ---------------------------- VEFIRICAÇÃO DE VALIDADE DE REDE -----------------------
 
 # comparar se o endeço ip está entre o endereço de rede eo endereço BROADCAST
+# verficar octeto por octeto
+
+validade = False
+
+for m in range (4):
+    if (enderecoIP[m] <= enderecoREDE[m]) or (enderecoIP[m] >= enderecoBROAD[m]):
+        validade = True
+
+print(f"Validade do IP: {validade}")
