@@ -38,4 +38,12 @@ for j in range(4):
     mask_invertida.append(bin(xor)[2:].zfill(8))
     # saída é do tipo STR
 
-print(mask_invertida)
+# Sair invertida e convertida para int(bin)
+
+mask_finalizada = []
+
+for k in range(4):
+    converter = int(mask_invertida[k], 2)
+    mask_finalizada.append(converter)
+
+print(f"Resultado final: {mask_finalizada}")
