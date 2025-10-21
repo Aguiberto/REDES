@@ -3,6 +3,7 @@ def binarizator(enderecoIPV4):
     octetos = enderecoIPV4.split('.')
 
     IPV4binario = []
+    int_IPV4binario = []
 
     for partes in octetos:
 
@@ -12,18 +13,55 @@ def binarizator(enderecoIPV4):
         complemento = purificador.zfill(8)
 
         IPV4binario.append(complemento)
+    
+    for binarios in IPV4binario:
 
-    return (IPV4binario)
+        interizador = int(binarios,2)
+
+        int_IPV4binario.append(interizador)
+
+    return (int_IPV4binario)
+
+def araksam (mask):
+
+    # Inverter a mascara
+    mask_invertida = []
+    fator_de_inversao = 0b11111111
+
+    for j in range(4):
+
+        xor  = fator_de_inversao ^ mask[j]
+        mask_invertida.append(xor)
+
+    return mask_invertida
 
 
-ip = input("Digite o endereço IP: ")
+enderecoIP = input("Digite o endereço IP: ")
+enderecoMASK = input("Digite o endereço BROADCAST: ")
 
-broadcast = input("Digite o endereço BROADCAST: ")
+converter_ip = binarizator(enderecoIP)
+converter_maskara = binarizator(enderecoMASK)
 
-ipconvertido = binarizator(ip)
-broadconvertido = binarizator(broadcast)
 
-print(ipconvertido)
-print(broadconvertido)
+enderecoREDE = []
+#variável que recebe o endereço de rede
 
+for i in range(4):
+    enderecoREDE.append(converter_ip[i] & converter_maskara[i])
+
+print(f"O endereço de REDE É: {enderecoREDE}")
+# ENDEREÇO DE REDE
+
+# --------------------------- ENDEREÇO BROADCAST --------------------------------
+
+inverter_mascara = araksam(converter_maskara)
+
+# realizando OR BITWISE
+
+enderecoBROAD = []
+for l in range(4):
+    fazendo_or = converter_ip[l] | inverter_mascara[l]
+    enderecoBROAD.append(fazendo_or)
+
+print(f"Seu endereço BROADCAST é: {enderecoBROAD}")
     
