@@ -35,17 +35,19 @@ def araksam (mask):
 
     return mask_invertida
 
-
+# ----------------------- RECEBENDO AS ENTRADAS ---------------------------------
 enderecoIP = input("Digite o endereço IP: ")
 enderecoMASK = input("Digite o endereço BROADCAST: ")
 
 converter_ip = binarizator(enderecoIP)
 converter_maskara = binarizator(enderecoMASK)
 
+# ----------------------- CALCULO DA REDE ---------------------------------------
 
 enderecoREDE = []
 #variável que recebe o endereço de rede
 
+# realiza AND BITWISE 
 for i in range(4):
     enderecoREDE.append(converter_ip[i] & converter_maskara[i])
 
@@ -59,9 +61,13 @@ inverter_mascara = araksam(converter_maskara)
 # realizando OR BITWISE
 
 enderecoBROAD = []
+# ENDEREÇO BROADCAST
 for l in range(4):
     fazendo_or = converter_ip[l] | inverter_mascara[l]
     enderecoBROAD.append(fazendo_or)
 
 print(f"Seu endereço BROADCAST é: {enderecoBROAD}")
-    
+
+# ---------------------------- VEFIRICAÇÃO DE VALIDADE DE REDE -----------------------
+
+# comparar se o endeço ip está entre o endereço de rede eo endereço BROADCAST
