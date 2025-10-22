@@ -14,4 +14,6 @@ for partes in octetos:
     IPbinario.append(complemento)
 
 print(IPbinario)
+print(type(IPbinario))
+print(type(IPbinario[0]))
     

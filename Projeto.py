@@ -21,6 +21,7 @@ def binarizator(enderecoIPV4):
         int_IPV4binario.append(interizador)
 
     return (int_IPV4binario)
+    # retorna uma lista de int
 
 def araksam (mask):
 
@@ -34,6 +35,8 @@ def araksam (mask):
         mask_invertida.append(xor)
 
     return mask_invertida
+    # retorna máscara em com o complemento binário em inteiro
+    # exemplo [0.0.0.255]
 
 # ----------------------- RECEBENDO AS ENTRADAS ---------------------------------
 enderecoIP = input("Digite o endereço IP: ")
