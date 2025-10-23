@@ -7,10 +7,10 @@ class ipv4_adress:
         self.endereco_mask = endereco_mask
 
         self.ip_convertido = self.binarizator(endereco_ip)
-        self.mask_invertida = self.binarizador(endereco_mask)
+        self.mask_invertida = self.binarizator(endereco_mask)
 
         self.rede = self.calcular_rede()
-        self.broadcast = self._calcular_broadcast()
+        self.broadcast = self.calcular_broadcast()
 
     def binarizator(self, enderecoIPV4):
 
@@ -31,7 +31,6 @@ class ipv4_adress:
     for binarios in IPV4binario:
 
         interizador = int(binarios,2)
-
         int_IPV4binario.append(interizador)
 
     return (int_IPV4binario)
@@ -83,8 +82,8 @@ class ipv4_adress:
 
     for m in range(4):
 
-    alterador_rede = str(enderecoREDE[m])
-    alterador_broad = str(enderecoBROAD[m])
+    alterador_rede = str(self.enderecoREDE[m])
+    alterador_broad = str(self.enderecoBROAD[m])
 
     rede_str.append(alterador_rede)
     broad_str.append(alterador_broad)
@@ -99,7 +98,7 @@ class ipv4_adress:
     conta_um = 0
      # cdri
 
-    for n in self.converter_maskara:
+    for n in self.converter_maskara: ####### OBSERVAR#########
     conta_um += bin(n).count('1')
 
     return conta_um
@@ -107,7 +106,11 @@ class ipv4_adress:
     
     def apresentar(self):
     
-    print(f"Endereço IPv4 CIDR: {enderecoIP}/{conta_um}")
+    rede_formatada,broad_formatado = self.formatador()
+    cidr_valor = self.cidr()
+    pertence = sel.pertence_a_rede()
+
+    print(f"Endereço IPv4 CIDR: {self.enderecoIP}/{cidr_valor}")
     print(f"Seu enderede de REDE é: {rede_formatada}")
     print(f"Seu endereço BROADCAST é: {broad_formatado}")
 
