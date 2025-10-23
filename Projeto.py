@@ -59,14 +59,12 @@ converter_maskara = binarizator(enderecoMASK)
 # ----------------------- CALCULO DA REDE ---------------------------------------
 
 enderecoREDE = []
-#variável que recebe o endereço de rede
+# variável que terá o endereço de rede
 
 # realiza AND BITWISE 
 for i in range(4):
     enderecoREDE.append(converter_ip[i] & converter_maskara[i])
 
-# print(f"O endereço de REDE É: {enderecoREDE}")
-# ENDEREÇO DE REDE
 
 # --------------------------- ENDEREÇO BROADCAST --------------------------------
 
