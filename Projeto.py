@@ -38,6 +38,17 @@ def araksam (mask):
     # retorna máscara em com o complemento binário em inteiro
     # exemplo [0.0.0.255]
 
+def pertence_a_rede(rede,ip,broadcast):
+    
+    if rede <= ip <= broadcast:
+        validade = True
+    else:
+        validade = False
+
+    return validade
+    # verifica se o ip está entre a rede e o broadcast
+
+
 # ----------------------- RECEBENDO AS ENTRADAS ---------------------------------
 enderecoIP = input("Digite o endereço IP: ")
 enderecoMASK = input("Digite o endereço BROADCAST: ")
@@ -90,14 +101,12 @@ for n in converter_maskara:
 rede_formatada = '.'.join(rede_str)
 broad_formatado = '.'.join(broad_str)
 
-print(f"Seu enderede de REDE é: {rede_formatada}/{conta_um}")
+print(f"Endereço IPv4 CIDR: {enderecoIP}/{conta_um}")
+print(f"Seu enderede de REDE é: {rede_formatada}")
 print(f"Seu endereço BROADCAST é: {broad_formatado}")
 
 # ---------------------- VALIDAÇÃO IP --------------------------------------------
 
-if enderecoREDE <= converter_ip <= enderecoBROAD:
-    validade = True
-else:
-    validade = False
+validacao = pertence_a_rede(enderecoREDE,converter_ip,enderecoBROAD)
 
-print(f"Validade : {validade}")
+print(f"Validade : {validacao}")
